@@ -38,3 +38,11 @@ cd scripts
 catkin_install_python(PROGRAMS scripts/talker.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
+
+
+# For assignment 2
+
+When you are in your ROS workspace, you should run:
+
+1. source devel/setup.bash
+2. roslaunch kinematics_assignment scara_launch.launch
