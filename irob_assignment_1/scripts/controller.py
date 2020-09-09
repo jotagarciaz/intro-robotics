@@ -1,4 +1,8 @@
 #!/usr/bin/env python2
+
+## {Manuel Fraile Rodríguez}
+## {manuelfr@kth.se}
+
 import rospy
 import actionlib
 import irob_assignment_1.msg
