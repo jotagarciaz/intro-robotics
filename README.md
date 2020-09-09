@@ -45,4 +45,5 @@ catkin_install_python(PROGRAMS scripts/talker.py
 When you are in your ROS workspace, you should run:
 
 1. source devel/setup.bash
-2. roslaunch kinematics_assignment scara_launch.launch
+2a. roslaunch kinematics_assignment scara_launch.launch
+2b. roslaunch kinematics_assignment kuka_launch.launch
