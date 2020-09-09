@@ -46,6 +46,6 @@ When you are in your ROS workspace, you should run:
 
 1. source devel/setup.bash
 
-2a. roslaunch kinematics_assignment scara_launch.launch
+   2a. roslaunch kinematics_assignment scara_launch.launch
 
-2b. roslaunch kinematics_assignment kuka_launch.launch
+   2b. roslaunch kinematics_assignment kuka_launch.launch
