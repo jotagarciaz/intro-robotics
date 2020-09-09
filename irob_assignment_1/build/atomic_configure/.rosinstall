@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/quini/catkin_ws/src/irob_assignment_1/build/devel/setup.sh
