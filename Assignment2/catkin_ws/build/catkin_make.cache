@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/m/a/manuelfr/KTH_assignments/Introduction_to_Robotics/intro-robotics/Assignment2/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/m/a/manuelfr/KTH_assignments/Introduction_to_Robotics/intro-robotics/Assignment2/catkin_ws/install -G Unix Makefiles
