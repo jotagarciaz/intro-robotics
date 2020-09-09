@@ -5,3 +5,6 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
+subdirs("kinematics_assignment_metapackage/kinematics_assignment_metapackage")
+subdirs("kinematics_assignment_metapackage/lwr_description")
+subdirs("kinematics_assignment_metapackage/kinematics_assignment")

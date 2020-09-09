@@ -131,6 +131,9 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/afs/kth.se/home/m/a/manuelfr/KTH_assignments/Introduction_to_Robotics/intro-robotics/Assignment2/catkin_ws/build/gtest/cmake_install.cmake")
+  include("/afs/kth.se/home/m/a/manuelfr/KTH_assignments/Introduction_to_Robotics/intro-robotics/Assignment2/catkin_ws/build/kinematics_assignment_metapackage/kinematics_assignment_metapackage/cmake_install.cmake")
+  include("/afs/kth.se/home/m/a/manuelfr/KTH_assignments/Introduction_to_Robotics/intro-robotics/Assignment2/catkin_ws/build/kinematics_assignment_metapackage/lwr_description/cmake_install.cmake")
+  include("/afs/kth.se/home/m/a/manuelfr/KTH_assignments/Introduction_to_Robotics/intro-robotics/Assignment2/catkin_ws/build/kinematics_assignment_metapackage/kinematics_assignment/cmake_install.cmake")
 
 endif()
 

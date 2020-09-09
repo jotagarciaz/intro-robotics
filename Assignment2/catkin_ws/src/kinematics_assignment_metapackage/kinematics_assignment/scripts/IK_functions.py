@@ -7,7 +7,6 @@
 
 import math as m
 import numpy as np
-from functools import reduce
 
 
 def scara_IK(point):
@@ -28,6 +27,7 @@ def scara_IK(point):
     q3=z
     
     q=[q1,q2,q3]
+    
 
     """
     Fill in your IK solution here and return the three joint values in q

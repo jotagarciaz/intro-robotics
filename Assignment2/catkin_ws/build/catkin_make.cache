@@ -1,2 +1,2 @@
-
+kinematics_assignment_metapackage/kinematics_assignment:kinematics_assignment_metapackage/kinematics_assignment_metapackage:kinematics_assignment_metapackage/lwr_description
 -DCATKIN_DEVEL_PREFIX=/home/m/a/manuelfr/KTH_assignments/Introduction_to_Robotics/intro-robotics/Assignment2/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/m/a/manuelfr/KTH_assignments/Introduction_to_Robotics/intro-robotics/Assignment2/catkin_ws/install -G Unix Makefiles

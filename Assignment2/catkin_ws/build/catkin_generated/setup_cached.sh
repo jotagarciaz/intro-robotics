@@ -8,6 +8,7 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/m/a/manuelfr/KTH_assignments/Introduction_to_Robotics/intro-robotics/Assignment2/catkin_ws/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/m/a/manuelfr/KTH_assignments/Introduction_to_Robotics/intro-robotics/Assignment2/catkin_ws/devel/lib:$LD_LIBRARY_PATH"
 export PWD='/afs/kth.se/home/m/a/manuelfr/KTH_assignments/Introduction_to_Robotics/intro-robotics/Assignment2/catkin_ws/build'
 export ROSLISP_PACKAGE_DIRECTORIES="/home/m/a/manuelfr/KTH_assignments/Introduction_to_Robotics/intro-robotics/Assignment2/catkin_ws/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/m/a/manuelfr/KTH_assignments/Introduction_to_Robotics/intro-robotics/Assignment2/catkin_ws/src:$ROS_PACKAGE_PATH"
