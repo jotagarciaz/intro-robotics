@@ -35,6 +35,7 @@ def scara_IK(point):
     q[1] = math.atan2(s2, c2)
     q[2] = z
 
+    print(q)
     return q
 
 
