@@ -1,13 +1,15 @@
 #! /usr/bin/env python3
 
 """
-    # {student full name}
-    # {student email}
+    # {Manuel Fraile Rodriguez}
+    # {manuelfr@kth.se}
 """
 
+import numpy as np
 import math as m
-import numpy as n
 from functools import reduce
+
+import sys
 
 
 def scara_IK(point):
@@ -16,23 +18,19 @@ def scara_IK(point):
     z = point[2]
     q = [0.0, 0.0, 0.0]
 
-    l0=0.07
-    l1=0.3
-    l2=0.35    
+    p0 = 0.07
+    p1 = 0.3
+    p2 = 0.35    
 
-    a=((x-l0)**2+y**2-l1**2-l2**2)/(2*l1*l2)
-    b=m.sqrt(1-a**2)
+    c1 = ((x-p0)**2+y**2-p1**2-p2**2)/(2*p1*p2)
+    c2 = m.sqrt(1-c1**2)
     
-    q1=m.atan2(y,x-l0)-m.atan2(l2*b,l1+l2*a)
-    q2=m.atan2(b,a) 
-    q3=z
-    
-    q=[q1,q2,q3]
-    
+    x = m.atan2(y,x-p0)-m.atan2(p2*c2,p1+p2*c1)
+    y = m.atan2(c2,c1) 
 
-    """
-    Fill in your IK solution here and return the three joint values in q
-    """
+    #z coordinate does not experience any transformation
+
+    q=[x,y,z]
 
     return q
 
@@ -42,7 +40,7 @@ def kuka_IK(point, R, joint_positions):
     z = point[2]
     q = joint_positions #it must contain 7 elements
   
-    q=n.array(joint_positions)
+    q=np.array(joint_positions)
     E=1e-2
     X=point
     
@@ -50,22 +48,22 @@ def kuka_IK(point, R, joint_positions):
         X_1,R_1=kuka_DH(q)
         e_X=X_1 - X
         e_R=kuka_AD(R,R_1)
-        e=n.concatenate((e_X,e_R))
+        e=np.concatenate((e_X,e_R))
         
     
         J=kuka_jacobian(q)
-        e_Q=n.dot(n.linalg.pinv(J),e)
+        e_Q=np.dot(np.linalg.pinv(J),e)
         q=q-e_Q
         
-        print (n.max(n.abs(e)))
-        if n.max(n.abs(e)) < E:
+        print (np.max(np.abs(e)))
+        if np.max(np.abs(e)) < E:
             break
         
     return q
 
 def kuka_matrix(alpha,d,r,theta):    
     
-    M=n.array(\
+    M=np.array(\
         [[m.cos(theta),-m.sin(theta)*m.cos(alpha),m.sin(theta)*m.sin(alpha),r*m.cos(theta)],
          [m.sin(theta),m.cos(theta)*m.cos(alpha),-m.cos(theta)*m.sin(alpha),r*m.sin(alpha)],
          [0,m.sin(alpha),m.cos(alpha),d],
@@ -94,9 +92,9 @@ def kuka_DH(joint_positions,short=False):
     ]
     
     T=list(map(lambda x:kuka_matrix(*x),table))
-    full_T=reduce(n.dot,T)
+    full_T=reduce(np.dot,T)
     R=full_T[:3, :3]
-    Q=n.dot(full_T,n.array([0,0,D,1]))
+    Q=np.dot(full_T,np.array([0,0,D,1]))
     Q=Q[:3]
     
     if not short: Q[2]+= A
@@ -105,13 +103,13 @@ def kuka_DH(joint_positions,short=False):
 
 def kuka_AD(R1,R2):
     
-    R1=n.array(R1)
-    R2=n.array(R2)
+    R1=np.array(R1)
+    R2=np.array(R2)
     
     a1,a2,a3=R1[:,0],R1[:,1],R1[:,2]
     b1,b2,b3=R2[:,0],R2[:,1],R2[:,2]
     
-    c=.5*(n.cross(a1,b1)+n.cross(a2,b2)+n.cross(a3,b3))
+    c=.5*(np.cross(a1,b1)+np.cross(a2,b2)+np.cross(a3,b3))
     
     return c        
     
@@ -137,7 +135,7 @@ def kuka_jacobian(joint_positions):
     P,R=kuka_DH(joint_positions,True)
     T=list(map(lambda x:kuka_matrix(*x),table))
     
-    transforms=[reduce(n.dot,T[:i],n.eye(4)) for i in range(len(T))]
+    transforms=[reduce(np.dot,T[:i],np.eye(4)) for i in range(len(T))]
     rotations=list(map(lambda x:x[:3,:3],transforms))
     translations=list(map(lambda x:x[:3,3],transforms))
     J_list=[]
@@ -146,11 +144,11 @@ def kuka_jacobian(joint_positions):
        
         r=rotations[i]
         tl=translations[i]
-        z_i=n.dot(r,n.array([0.,0,1]))
+        z_i=np.dot(r,np.array([0.,0,1]))
         Joi=z_i
-        Jpi=n.cross(z_i,P-tl)
-        Ji=n.concatenate((Jpi,Joi))
+        Jpi=np.cross(z_i,P-tl)
+        Ji=np.concatenate((Jpi,Joi))
         J_list.append(Ji)
-    J=n.stack(J_list).T
+    J=np.stack(J_list).T
         
     return J
